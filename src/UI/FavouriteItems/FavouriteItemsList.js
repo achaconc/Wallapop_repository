@@ -32,7 +32,7 @@ const FavouriteItemList = (props) => {
 
   return (
     <Box>
-      <Box className="search_container">
+      <Box className="favourite_search_container search_container">
         <Box className="search-icon-wrapper">
           <IconButton>
             <Search/>

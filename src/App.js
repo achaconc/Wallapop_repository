@@ -13,6 +13,7 @@ const App = () => {
   const [filteredItems, setFilteredItems] = useState(null);
   const [filterEntered, setFilterEntered] = useState("");
   const [orderClause, setOrderClause] = useState(null);
+  const [checkedList, setCheckedList] = useState({});
   const [open, setOpen] = useState(false);
   const [pageSelected, setPageSelected] = useState(1);
   const [currentPageItems, setCurrentPageItems] = useState(null);
@@ -42,6 +43,7 @@ const App = () => {
         ]
       });
     }
+    checkedListHandler(item.id, isChecked);
   }
 
 const handleOpen = () => setOpen(true);
@@ -52,7 +54,17 @@ const searchFilterHandler = (event) => setFilterEntered(event.target.value);
 const removeItemHandler = (id) => {
   const list = favouriteItems.filter((item) => item.id !== id);
   setFavouriteItems(list);
+  checkedListHandler(id, false);
 };
+
+const checkedListHandler = (id, isChecked) => {
+  checkedList[id] = isChecked;
+  setCheckedList((prevState) => {
+    return {
+      ...checkedList
+    };
+  });
+}
 
 const sortItemHandler = (mode, field) => {
   setOrderClause({mode, field});
@@ -83,7 +95,7 @@ useEffect(() => {
         favouriteItems={favouriteItems}
         items={currentPageItems}
         removeItemHandler={removeItemHandler}
-      />
+        checkedList={checkedList}/>
       <Stack spacing={2}>
         <Pagination
           page={pageSelected}

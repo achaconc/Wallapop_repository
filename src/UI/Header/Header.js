@@ -12,13 +12,19 @@ import {
   MenuItem,
   Divider,
   Menu,
-  Fade
+  Fade,
+  useMediaQuery
 } from '@mui/material';
 import {
-  Search
+  FavoriteBorder,
+  Search,
+  Sort
  } from '@mui/icons-material';
+import { useTheme } from '@mui/material/styles';
 
 const Header = (props) => {
+  const theme = useTheme();
+  const xsScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -38,7 +44,7 @@ const Header = (props) => {
       <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              WALLAPlus
+              WALLAPUFF
             </Typography>
             <Box className="search_container">
               <Box className="search-icon-wrapper">
@@ -53,19 +59,25 @@ const Header = (props) => {
               />
             </Box>
             <div>
-              <Button
-                id="demo-customized-button"
-                aria-controls={open ? "demo-customized-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
-                variant="contained"
-                disableElevation
-                onClick={handleClick}>
-                Ordenar
-              </Button>
-              <Menu id="demo-customized-button"
+              { xsScreen ?
+                  <IconButton color="inherit" onClick={handleClick}>
+                    <Sort />
+                  </IconButton>
+                  :
+                  <Button
+                    id="sort_button"
+                    aria-controls={open ? "sort_menu" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? "true" : undefined}
+                    variant="contained"
+                    disableElevation
+                    onClick={handleClick}>
+                    Ordenar
+                  </Button>
+                }
+              <Menu id="sort-button"
                 MenuListProps={{
-                  "aria-labelledby": "demo-customized-button",
+                  "aria-labelledby": "sort-button",
                 }}
                 anchorEl={anchorEl}
                 open={open}
@@ -100,12 +112,18 @@ const Header = (props) => {
                   </MenuItem>
                 </Menu>
               </div>
-              <Button
-                variant="contained"
-                disableElevation
-                onClick={props.onHandleOpen}>
-                Favoritos
-              </Button>
+              { xsScreen ?
+                  <IconButton color="inherit" onClick={props.onHandleOpen}>
+                    <FavoriteBorder />
+                  </IconButton>
+                  :
+                  <Button
+                    variant="contained"
+                    disableElevation
+                    onClick={props.onHandleOpen}>
+                    Favoritos
+                  </Button>
+                }
           </Toolbar>
       </Container>
     </AppBar>

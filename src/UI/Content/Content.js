@@ -10,7 +10,7 @@ const Content = (props) => {
 
   return (
     <div>
-      <ItemList onFavouriteItemsChangeHandler={props.favouriteItemsAddHandler} favouriteItems={props.favouriteItems} items={props.items}/>
+      <ItemList onFavouriteItemsChangeHandler={props.favouriteItemsAddHandler} favouriteItems={props.favouriteItems} items={props.items} checkedList={props.checkedList}/>
       <Card>
           <Card>
             <CustomizedDialog open={props.open} onClose={props.handleClose} title=" Tus Favoritos">

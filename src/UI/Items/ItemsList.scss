@@ -5,20 +5,28 @@
   .main_container {
     margin: 0;
     width: 100%;
-
-    .image_container {
-      width: 20rem;
-      height: 20rem;
-      padding: 16px;
-
-      .image {
-        margin: auto;
-        display: block;
-        max-width: 100%;
-        max-height: 100%;
+    .grid_container {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+      border-radius: 10px;
+      .image_container {
         width: 20rem;
         height: 20rem;
+        padding: 16px;
+        .image {
+          margin: auto;
+          display: block;
+          max-width: 100%;
+          max-height: 100%;
+          width: 20rem;
+          height: 20rem;
 
+        }
+      }
+      .add_favourite_cb {
+        margin: .5rem;
+      }
+      .item_price {
+        padding: 1.5rem;
       }
     }
   }

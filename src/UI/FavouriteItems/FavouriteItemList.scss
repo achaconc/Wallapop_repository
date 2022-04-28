@@ -1,3 +1,8 @@
+.favourite_search_container {
+  border-style: groove;
+  float: right;
+  width: 35%;
+}
 .favourite-list_component {
   overflow-y: auto;
   height: 30rem;
@@ -18,5 +23,24 @@
       border-radius: 5px 5px 0px 0px;
     }
   }
+}
+@media (max-width: 800px) {
+  .favourite-list_component {
+    padding-top: 2.5rem;
+  }
+  .favourite_search_container {
+    width: 50%;
+    float: right;
+    position: absolute;
+    right: 0;
+    margin-top: 0.5rem;
+    margin-right: 1rem;
+  }
+}
 
+@media (max-width: 500px) {
+  .favourite_search_container {
+    width: 95%;
+    left: 0.5rem;
+  }
 }
