@@ -8,7 +8,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+const CustomDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
     padding: theme.spacing(2),
   },
@@ -17,7 +17,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-const BootstrapDialogTitle = (props) => {
+const CustomDialogTitle = (props) => {
   const { children, onClose, ...other } = props;
 
   return (
@@ -41,33 +41,33 @@ const BootstrapDialogTitle = (props) => {
   );
 };
 
-BootstrapDialogTitle.propTypes = {
+CustomDialogTitle.propTypes = {
   children: PropTypes.node,
   onClose: PropTypes.func.isRequired,
 };
 
 export default function CustomizedDialogs(props) {
-    const theme = useTheme();
-    const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <div>
-      <BootstrapDialog
+      <CustomDialog
         onClose={props.onClose}
         aria-labelledby="customized-dialog-title"
         open={props.open}
         maxWidth="lg"
         fullWidth
         fullScreen={fullScreen}>
-        <BootstrapDialogTitle
+        <CustomDialogTitle
           id="customized-dialog-title"
           onClose={props.onClose}>
           {props.title}
-        </BootstrapDialogTitle>
+        </CustomDialogTitle>
         <DialogContent dividers>
-                {props.children}
+          {props.children}
         </DialogContent>
-      </BootstrapDialog>
+      </CustomDialog>
     </div>
   );
 }

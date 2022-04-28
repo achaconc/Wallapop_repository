@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './UI/Header/Header';
 import Content from './UI/Content/Content';
-import {fetchFilteredItems, fetchPaginatedItems} from './services/itemServices';
+import { fetchFilteredItems, fetchPaginatedItems } from './services/ItemServices';
 import {
-Pagination,
-Stack
+  Pagination,
+  Stack
 } from '@mui/material';
 
 const App = () => {
@@ -29,65 +29,67 @@ const App = () => {
       title: item.title,
       image: item.image
     }
-    if(!isChecked) {
-      setFavouriteItems((prevState)=> {
+    if (!isChecked) {
+      setFavouriteItems((prevState) => {
         const index = prevState.filter(i => i.id !== parsedItem.id);
         return index;
       });
     }
     else {
-      setFavouriteItems((prevState)=> {
+      setFavouriteItems((prevState) => {
         return [
           ...prevState,
-          { id: item.id, title: item.title, image: item.image}
+          { id: item.id, title: item.title, image: item.image }
         ]
       });
     }
     checkedListHandler(item.id, isChecked);
   }
 
-const handleOpen = () => setOpen(true);
-const handleClose = () => setOpen(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
-const searchFilterHandler = (event) => setFilterEntered(event.target.value);
+  const searchFilterHandler = (event) => setFilterEntered(event.target.value);
 
-const removeItemHandler = (id) => {
-  const list = favouriteItems.filter((item) => item.id !== id);
-  setFavouriteItems(list);
-  checkedListHandler(id, false);
-};
+  const removeItemHandler = (id) => {
+    const list = favouriteItems.filter((item) => item.id !== id);
+    setFavouriteItems(list);
+    checkedListHandler(id, false);
+  };
 
-const checkedListHandler = (id, isChecked) => {
-  checkedList[id] = isChecked;
-  setCheckedList((prevState) => {
-    return {
-      ...checkedList
-    };
-  });
-}
+  const checkedListHandler = (id, isChecked) => {
+    checkedList[id] = isChecked;
+    setCheckedList((prevState) => {
+      return {
+        ...checkedList
+      };
+    });
+  }
 
-const sortItemHandler = (mode, field) => {
-  setOrderClause({mode, field});
-};
+  const sortItemHandler = (mode, field) => {
+    setOrderClause({ mode, field });
+  };
 
-useEffect(() => {
-  fetchFilteredItems(orderClause, filterEntered, null, setFilteredItems, setCurrentPageItems);
-  if (pageSelected!== 1)
-    setPageSelected(1);
-},[filterEntered]);
+  useEffect(() => {
+    fetchFilteredItems(orderClause, filterEntered, null, setFilteredItems, setCurrentPageItems);
+    if (pageSelected !== 1)
+      setPageSelected(1);
+    // eslint-disable-next-line
+  }, [filterEntered]);
 
-useEffect(() => {
-  fetchFilteredItems(orderClause, filterEntered, filteredItems, setFilteredItems, setCurrentPageItems);
-  if (pageSelected!== 1)
-    setPageSelected(1);
-},[orderClause]);
+  useEffect(() => {
+    fetchFilteredItems(orderClause, filterEntered, filteredItems, setFilteredItems, setCurrentPageItems);
+    if (pageSelected !== 1)
+      setPageSelected(1);
+    // eslint-disable-next-line
+  }, [orderClause]);
 
   return (
     <div className="App">
       <Header
         onHandleOpen={handleOpen}
         onSearchItem={searchFilterHandler}
-        onSortItem={sortItemHandler}/>
+        onSortItem={sortItemHandler} />
       <Content
         favouriteItemsAddHandler={favouriteItemsAddHandler}
         open={open}
@@ -95,13 +97,13 @@ useEffect(() => {
         favouriteItems={favouriteItems}
         items={currentPageItems}
         removeItemHandler={removeItemHandler}
-        checkedList={checkedList}/>
+        checkedList={checkedList} />
       <Stack spacing={2}>
         <Pagination
           page={pageSelected}
-          count={filteredItems ? Math.ceil(filteredItems.length/5) : 1}
+          count={filteredItems ? Math.ceil(filteredItems.length / 5) : 1}
           color="primary"
-          onChange={changePageHandler}/>
+          onChange={changePageHandler} />
       </Stack>
     </div>
   );
