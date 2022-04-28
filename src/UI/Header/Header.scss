@@ -1,0 +1,23 @@
+.search_container {
+  position: relative;
+  border-radius: 4px;
+  background-color: white;
+  input{
+    text-align: center;
+  }
+  &:hover{
+    background-color: white;
+  }
+  margin-right: 2rem;
+  margin-left: 0;
+  width: 20%;
+
+  .search-icon-wrapper {
+    height: 100%;
+    position: absolute;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

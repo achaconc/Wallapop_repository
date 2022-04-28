@@ -1,0 +1,35 @@
+.list-component {
+  list-style: none;
+  padding: 1rem;
+
+  .main_container {
+    margin: 0;
+    width: 100%;
+
+    .image_container {
+      width: 20rem;
+      height: 20rem;
+      padding: 16px;
+
+      .image {
+        margin: auto;
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        width: 20rem;
+        height: 20rem;
+
+      }
+    }
+  }
+
+  .sub_conatiner{
+    padding: 16px;
+  }
+
+  .description_component {
+    text-align: justify;
+    margin-top: 1.5rem;
+  }
+
+}
