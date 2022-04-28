@@ -31,7 +31,7 @@ const ItemList = (props) => {
     <ul className="list-component">
       {props.items && props.items.map((item, index) => (
         <Item key={"listItem" + index}>
-          <Grid className="main_container" justifyContent="center" container xs={12}>
+          <Grid className="main_container" justifyContent="center" container>
             <Grid className="grid_container" item container xs={mdScreen ? 12 : 9}>
               <Grid className="image_container" item xs={xsScreen ? 12 : 3}>
                 <img className="image" alt="complex" src={item.image} />
