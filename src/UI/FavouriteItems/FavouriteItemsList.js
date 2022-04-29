@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './FavouriteItemList.scss';
-import { fetchFavouriteFilteredItems } from '../../Services/ItemServices';
+import { fetchFavouriteFilteredItems } from '../../services/ItemServices';
 import {
   IconButton,
   Box,
@@ -38,9 +38,8 @@ const FavouriteItemList = (props) => {
             <Search />
           </IconButton>
         </Box>
-        <InputBase
-          placeholder="Search…"
-          inputProps={{ 'aria-label': 'search' }}
+        <InputBase placeholder="Search…"
+          inputrops={{ 'aria-label': 'search' }}
           onChange={searchFilterHandler}
         />
       </Box>

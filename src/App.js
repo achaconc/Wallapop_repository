@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from './UI/Header/Header';
 import Content from './UI/Content/Content';
-import { fetchFilteredItems, fetchPaginatedItems } from './Services/ItemServices';
+import { fetchFilteredItems, fetchPaginatedItems } from './services/ItemServices';
 import {
   Pagination,
   Stack
