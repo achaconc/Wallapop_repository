@@ -9,7 +9,8 @@ import {
   Paper,
   Typography,
   Fab,
-  InputBase
+  InputBase,
+  Alert
 } from '@mui/material';
 import {
   DeleteOutline,
@@ -44,7 +45,7 @@ const FavouriteItemList = (props) => {
         />
       </Box>
       <Grid className="favourite_list_component" container spacing={2}>
-        {favouriteFiterItems.map((item) => (
+        {favouriteFiterItems && favouriteFiterItems.length > 0 ? favouriteFiterItems.map((item) => (
           <Grid key={item.id} className="favourite_container" item xs={mdScreen ? xsScreen ? 12 : 6 : 3}>
             <Paper elevation={3} >
               <Fab className="fovourite_delete" size="small" aria-label="delete" onClick={() => props.onRemoveItem(item.id)}>
@@ -56,7 +57,11 @@ const FavouriteItemList = (props) => {
               </Typography>
             </Paper>
           </Grid>
-        ))}
+        )) :
+          <Grid item xs={12}>
+            <Alert severity="info">Aún no tienes anuncios favoritos. Comienza a añadir tus favoritos para verlos en esta sección.</Alert>
+          </Grid>
+       }
       </Grid>
     </Box>
   );

@@ -98,7 +98,7 @@ const App = () => {
         items={currentPageItems}
         removeItemHandler={removeItemHandler}
         checkedList={checkedList} />
-      <Stack spacing={2}>
+      <Stack id="pagination_cont" spacing={2}>
         <Pagination
           page={pageSelected}
           count={filteredItems ? Math.ceil(filteredItems.length / 5) : 1}
