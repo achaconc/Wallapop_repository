@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './FavouriteItemList.scss';
-import { fetchFavouriteFilteredItems } from '../../services/ItemServices';
+import { fetchFavouriteFilteredItems } from '../../Services/ItemServices';
 import {
   IconButton,
   Box,

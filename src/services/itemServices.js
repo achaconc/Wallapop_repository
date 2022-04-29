@@ -1,5 +1,5 @@
 import { searchBy, sortBy } from '../components/Filter/Filter';
-import { items } from '../data/items';
+import { items } from '../Data/Items';
 
 export const fetchFilteredItems = (order, keyword, filteredItems, callbackFilter, callbackPagination) => {
   if (keyword && !filteredItems) {
